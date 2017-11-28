@@ -1,38 +1,41 @@
 package com.mytodolist.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mytodolist.Object.Note;
+import com.mytodolist.Model.Note;
+import com.mytodolist.Repository.NoteRepository;
 
 @RestController
 @RequestMapping(value = "/notes")
 public class NoteController {
-	private ArrayList<Note> notes;
+	private NoteRepository noteRepository;
 	
-	public NoteController() throws Exception{
-		notes = new ArrayList<>();
-		
-		notes.add(new Note(1, false, "alisveris", "su, sut"));
-		notes.add(new Note(2, false, "alisveris", "su, sut"));
-		notes.add(new Note(3, false, "alisveris", "su, sut"));
-		notes.add(new Note(4, false, "alisveris", "su, sut"));
+	public NoteController(NoteRepository noteRepository) throws Exception{
+		this.noteRepository = noteRepository;
 	}
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
-	public ArrayList<Note> getAllNotes(){
-		return notes;
+	public Iterable<Note> getAllNotes(){
+		return noteRepository.findAll();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public List<Note> getNoteById(@PathVariable int id) {
-		return notes.stream().filter(x -> x.getId() == id).collect(Collectors.toList());
-		
+	public List<Note> getNoteById(@PathVariable long id) {
+		return noteRepository.findById(id);
+	}
+	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String deleteNoteById(@PathVariable long id) {
+		try {
+			noteRepository.delete(id);
+		}catch(Exception e) {
+			return "Cannot deleted.";
+		}
+		return "Successfully deleted.";
 	}
 }
