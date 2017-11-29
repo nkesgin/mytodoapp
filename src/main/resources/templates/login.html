@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th ="http://www.thymeleaf.orgs">
 <head>
     <meta charset="utf-8"/>
     <title>Login Page</title>
-    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../static/metisMenu/metisMenu.min.css" rel="stylesheet"/>
-    <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+    <link rel="stylesheet" href="../static/metisMenu.min.css" th:href="@{/metisMenu.min.css}" />
+    <link rel="stylesheet" href="../static/font-awesome.min.css" type="text/css" th:href="@{/metisMenu.min.css}"/>
+    <script type="text/javascript" src="../static/jquery.min.js" th:src="@{/jquery.min.js}"></script>
+    <script type="text/javascript" src="../static/angular.min.js" th:src="@{/angular.min.js}"></script>
+    <script type="text/javascript" src="../static/bootstrap.min.js" th:src="@{/bootstrap.min.js}"></script>
+    <script type="text/javascript" src="../static/metisMenu.min.js" th:src="@{/metisMenu.min.js}"></script>
+    <script type="text/javascript" src = "../static/main.js" th:src="@{/main.js}"></script>
+    <script type="text/javascript" src = "../static/loginController.js" th:src="@{/loginController.js}"></script>
 </head>
 <body ng-app = "app" ng-controller = "LoginController as vm">
     <div class="container">
@@ -17,28 +23,20 @@
                     </div>
                     <div class="panel-body">
                         <form role="form">
-                            <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Username" name="username" ng-model="username" type="text"/>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" ng-model ="pass" value=""/>
                                 </div>
-                                <button class="btn btn-lg btn-success btn-block" ng-click="login">Login</button>
-                            </fieldset>
+                                <button class="btn btn-lg btn-success btn-block" ng-click="login()">Login</button>
+                                <button class="btn btn-lg btn-success btn-block" ng-click="create()">Signup</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src = "../js/main.js"></script>
-    <script type="text/javascript" src = "../js/loginController.js"></script>
-    <script type="text/javascript" src="../static/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="../static/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../static/metisMenu/metisMenu.min.js"></script>
-    <script type="text/javascript" src="../static/angular/angular.min.js"></script>
-
 </body>
 
 </html>
