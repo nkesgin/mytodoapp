@@ -1,85 +1,74 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th ="http://www.thymeleaf.orgs">
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My TO DO App</title>
-<link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-<link href="../static/metisMenu/metisMenu.min.css" rel="stylesheet" />
-<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+<link rel="stylesheet" href="../static/metisMenu.min.css" th:href="@{/metisMenu.min.css}" />
+<link rel="stylesheet" href="../static/font-awesome.min.css" type="text/css" th:href="@{/font-awesome.min.css}"/>
+<link rel="stylesheet" href="../static/main.css" type="text/css" th:href="@{/main.css}"/>
+<script type="text/javascript" src="../static/jquery.min.js" th:src="@{/jquery.min.js}"></script>
+<script type="text/javascript" src="../static/angular.min.js" th:src="@{/angular.min.js}"></script>
+<script type="text/javascript" src="../static/angular-route.min.js" th:src="@{/angular-route.min.js}"></script>
+<script type="text/javascript" src="../static/angular-resource.min.js" th:src="@{/angular-resource.min.js}"></script>
+<script type="text/javascript" src="../static/bootstrap.min.js" th:src="@{/bootstrap.min.js}"></script>
+<script type="text/javascript" src="../static/metisMenu.min.js" th:src="@{/metisMenu.min.js}"></script>
+<script type="text/javascript" src = "../static/main.js" th:src="@{/main.js}"></script>
 </head>
-<body>
-	<div id="wrapper">
-		<!-- Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation"
-			style="margin-bottom: 0">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> 
-					<span class="icon-bar"></span> <span class="icon-bar"></span> 
-						<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.html">TODO App</a>
-			</div>
-			<!-- /.navbar-header -->
-
-			<ul class="nav navbar-top-links navbar-right">
-				
+<body ng-app = "app" ng-controller ="NoteController" ng-init="init()">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Welcome {{user.username}}</a>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid p-0">
+      <section class="" id="intro">
+        <div class="my-auto">
+          <h1 class="mb-0">Hey
+            <span class="text-primary">{{user.username}}</span>
+          </h1>
+          <div class="subheading mb-5">Lorem ipsum dolor sit amet, mei ea noster intellegat, audire 
+          </div>
+          <p class="mb-5">Lorem ipsum dolor sit amet, mei ea noster intellegat, audire volumus nec cu. 
+          Vidit tollit perfecto ea sea, eu sea quidam iriure epicurei. Placerat legendos molestiae vel et,
+           vix magna rebum sensibus eu, per ut paulo scriptorem. Nam homero alienum placerat te, adhuc delectus vim ne.
+            Ea quo principes dissentiunt, modo consequat intellegam est id. Et quis aperiri consequat sed. 
+            Modus saperet mediocritatem ei pri, eum ne deserunt interesset.
+          </p>
+        </div>
+      </section>
+<section class="" id="notes">
+<div>
+<form>
+  <div class="form-group">
+    <label for="title">title:</label>
+    <input type="text" class="form-control" ng-model="text"/>
+  </div>
+  <div class="form-group">
+    <label for="text">text:</label>
+    <input type="text" class="form-control" ng-model="title"/>
+  </div>
+  <button type="submit" class="btn btn-default" ng-click="createNote()">AddNote</button>
+</form>
+</div>
+          <h2>Notes</h2>
+			<ul ng-repeat = "n in notes" >
+			<li class= "container-fluid">
+			Title: {{n.title}}<br/>
+			Text: {{n.text}}<br/>
+			Done<input type="checkbox" ng-model="n.checked" ng-click ="setNoteAsChecked(n)"/> <br/>
+			<button type="submit" class="btn btn-default" ng-click="deleteNote(n)">DeleteNote</button>
+			</li>
 			</ul>
-			<!-- /.navbar-top-links -->
-
-			<div class="navbar-default sidebar" role="navigation">
-				<div class="sidebar-nav navbar-collapse">
-					<ul class="nav" id="side-menu">
-						<li class="sidebar-search">
-							<div class="input-group custom-search-form">
-								<input type="text" class="form-control" placeholder="Search..." />
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-							</div> <!-- /input-group -->
-						</li>
-						<li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i>
-								Dashboard</a></li>
-						<li><a href="tables.html"><i class="fa fa-table fa-fw"></i>
-								Tables</a></li>
-						<li><a href="forms.html"><i class="fa fa-edit fa-fw"></i>
-								Forms</a></li>
-							<ul class="nav nav-second-level">
-								<li><a href="blank.html">Notes Page</a></li>
-								<li><a href="login.html">Login Page</a></li>
-							</ul> 
-					</ul>
-				</div>
-				<!-- /.sidebar-collapse -->
-			</div>
-			<!-- /.navbar-static-side -->
-		</nav>
-
-		<div id="page-wrapper">
-			<div class="row">
-				<div class="col-lg-12">
-					<h1 class="page-header">Dashboard</h1>
-				</div>
-			</div>
-			<div>view part</div>
+			</section>
 			<div class="panel-footer">
-				<div class="input-group">
-					<input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." /> 
-					<span class="input-group-btn">
-						<button class="btn btn-warning btn-sm" id="btn-chat">Send</button>
-					</span>
-				</div>
+			by Nurhan Kesgin
 			</div>
 		</div>
-	</div>
-		<script type="text/javascript" src="../static/jquery/jquery.min.js"></script>
-		<script type="text/javascript" src="../static/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../static/metisMenu/metisMenu.min.js"></script>
 </body>
 
 </html>

@@ -1,19 +1,22 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th ="http://www.thymeleaf.orgs">
 <head>
-    <meta charset="utf-8"/>
-    <title>Login Page</title>
-    <link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
-    <link rel="stylesheet" href="../static/metisMenu.min.css" th:href="@{/metisMenu.min.css}" />
-    <link rel="stylesheet" href="../static/font-awesome.min.css" type="text/css" th:href="@{/metisMenu.min.css}"/>
-    <script type="text/javascript" src="../static/jquery.min.js" th:src="@{/jquery.min.js}"></script>
-    <script type="text/javascript" src="../static/angular.min.js" th:src="@{/angular.min.js}"></script>
-    <script type="text/javascript" src="../static/bootstrap.min.js" th:src="@{/bootstrap.min.js}"></script>
-    <script type="text/javascript" src="../static/metisMenu.min.js" th:src="@{/metisMenu.min.js}"></script>
-    <script type="text/javascript" src = "../static/main.js" th:src="@{/main.js}"></script>
-    <script type="text/javascript" src = "../static/loginController.js" th:src="@{/loginController.js}"></script>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My TO DO App</title>
+<link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+<link rel="stylesheet" href="../static/metisMenu.min.css" th:href="@{/metisMenu.min.css}" />
+<link rel="stylesheet" href="../static/font-awesome.min.css" type="text/css" th:href="@{/font-awesome.min.css}"/>
+<script type="text/javascript" src="../static/jquery.min.js" th:src="@{/jquery.min.js}"></script>
+<script type="text/javascript" src="../static/angular.min.js" th:src="@{/angular.min.js}"></script>
+<script type="text/javascript" src="../static/angular-route.min.js" th:src="@{/angular-route.min.js}"></script>
+<script type="text/javascript" src="../static/angular-resource.min.js" th:src="@{/angular-resource.min.js}"></script>
+<script type="text/javascript" src="../static/bootstrap.min.js" th:src="@{/bootstrap.min.js}"></script>
+<script type="text/javascript" src="../static/metisMenu.min.js" th:src="@{/metisMenu.min.js}"></script>
+<script type="text/javascript" src = "../static/main.js" th:src="@{/main.js}"></script>
 </head>
-<body ng-app = "app" ng-controller = "LoginController as vm">
+<body ng-app = "app" ng-controller ="LoginController">
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
@@ -38,5 +41,4 @@
         </div>
     </div>
 </body>
-
 </html>

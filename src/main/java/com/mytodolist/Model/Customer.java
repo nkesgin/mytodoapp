@@ -16,7 +16,7 @@ public class Customer implements Serializable{
 	private long id;
 	@Column(name = "username")
 	private String username;
-	@Column(name = "pass")
+	@Column(name = "password")
 	private String password;
 
 	public Customer() {
